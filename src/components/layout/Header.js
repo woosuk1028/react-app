@@ -9,11 +9,13 @@ const Header = () => {
             <div className="right">
                 <Search />
 
+                <div style={{padding: '0px 20px'}}>
                 <Button
-                    title="success Button"
+                    title="등록"
                     variant="success"
                     onClick={() => alert('success clicked!')}
                 />
+                </div>
             </div>
         </header>
     );

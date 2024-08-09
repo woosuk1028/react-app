@@ -1,13 +1,15 @@
 import styled from "styled-components";
 
 export const StyledButton = styled.button`
-    padding: 10px 20px;
+    width:50px;
+    height: 100%;
+    padding: 0px 10px;
     background-color: ${(props) => getBackgroundColor(props.variant)};
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 14px;
     transition: background-color 0.3s;
 
     &:disabled {

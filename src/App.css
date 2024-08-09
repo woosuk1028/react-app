@@ -26,27 +26,6 @@ header .right {
   justify-content: end;
 }
 
-.search {
-  position: relative;
-  width: 500px;
-}
-
-.search input {
-  width: 100%;
-  border: 1px solid #bbb;
-  border-radius: 8px;
-  padding: 5px 5px;
-  font-size: 14px;
-}
-
-.search img {
-  position : absolute;
-  width: 17px;
-  top: 5px;
-  right: 0;
-  margin: 0;
-}
-
 footer {
   background-color: #282c34;
   color: white;
