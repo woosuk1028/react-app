@@ -1,12 +1,25 @@
-import axios from 'axios';
+import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 
-const API_URL = 'https://seok2.duckdns.org/api';
+const client = new ApolloClient({
+    uri: 'https://seok2.duckdns.org/graphql',
+    cache: new InMemoryCache(),
+});
 
 export const fetchMapData = async () => {
-    try {
-        const response = await axios.get(`${API_URL}/map/find`);
-        return response.data;
-    } catch (error) {
-        throw error;
-    }
+    const { data } = await client.query({
+        query: gql`
+            {
+                maps {
+                    seq
+                    title
+                    contents
+                    lat
+                    lng
+                    star
+                    create_date
+                }
+            }`
+    });
+
+    return data.maps;
 }
