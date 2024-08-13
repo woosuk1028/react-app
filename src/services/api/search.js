@@ -8,16 +8,21 @@ const client = new ApolloClient({
 export const fetchSearchData = async (title) => {
     const { data } = await client.query({
         query: gql`
-        {
-            search {
-                seq
-                title
-                contents
-                lat
-                lng
-                star
-                create_date
-            }   
-        }`;
+            query($title: String!) {
+                search(title: $title) {
+                    seq
+                    title
+                    contents
+                    lat
+                    lng
+                    star
+                    create_date
+                }
+            }
+        `,
+        variables: { title },
     });
+
+    console.log(data.search);
+    return data.search;
 }
