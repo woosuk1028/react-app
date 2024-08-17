@@ -16,7 +16,7 @@ const Header = ({ onSearch }) => {
     }
 
     const handleLogo = () => {
-        navigate('/home');
+        navigate('/');
     }
 
     return (

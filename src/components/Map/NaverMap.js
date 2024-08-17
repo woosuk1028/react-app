@@ -22,7 +22,7 @@ const NaverMap = () => {
             );
 
         return () => {
-            clearTimeout(watchId);
+            clearLocationWatch(watchId);
         }
     }, []);
 
@@ -35,15 +35,25 @@ const NaverMap = () => {
             const mapInstance = new naver.maps.Map('map', mapOptions);
             setMap(mapInstance);
 
+            const markerContent = `
+                <div class="custom-marker" style="
+                    width: 50px;
+                    height: 50px;
+                    background-image: url('https://lh3.googleusercontent.com/a/AEdFTp6uzKCDpf4kRS5hZGG2jKkxKU1TSdG0JjXPnj2e=s96-c');
+                    background-size: cover;
+                    border-radius: 50%;
+                    border: 2px solid white;
+                    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+                "></div>
+            `;
+
             const myMarker = new naver.maps.Marker({
                 position: new naver.maps.LatLng(location.lat, location.lng),
                 map: mapInstance,
                 title: 'My Location',
                 icon: {
-                    url: 'https://lh3.googleusercontent.com/a/AEdFTp6uzKCDpf4kRS5hZGG2jKkxKU1TSdG0JjXPnj2e=s96-c',
-                    size: new naver.maps.Size(24, 24),
-                    origin: new naver.maps.Point(10, 10),
-                    anchor: new naver.maps.Point(12, 12),
+                    content: markerContent,
+                    anchor: new naver.maps.Point(25, 25),
                 },
             });
             setMyLocationMarker(myMarker);

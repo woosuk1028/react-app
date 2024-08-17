@@ -17,6 +17,7 @@ header .left {
   padding: 10px;
   display: flex;
   justify-content: start;
+  cursor: pointer;
 }
 
 header .right {

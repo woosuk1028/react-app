@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Form, Field } from 'react-final-form';
+import { useNavigate } from 'react-router-dom';
 import { getCurrentLocation } from 'services/api/geo';
 import {
     FormContainer,
@@ -12,6 +13,7 @@ import {
 import { fetchCreateData } from 'services/api/create';
 
 const CreatePage = () => {
+    const navigate = useNavigate();
     const [location, setLocation] = useState({ lat: null, lng: null });
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -19,6 +21,11 @@ const CreatePage = () => {
     const onSubmit = async (values) => {
         try {
             const result = await fetchCreateData(values.title, values.contents, values.lat, values.lng);
+            if(result)
+            {
+                window.alert('성공적으로 저장되었습니다.');
+                navigate('/');
+            }
             console.log(result);
         } catch (error) {
             console.error('Error creating data:', error);
